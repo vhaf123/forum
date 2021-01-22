@@ -1,0 +1,9 @@
+.btn {
+    @apply font-bold py-1 px-4 rounded;
+}
+.btn-secondary {
+    @apply bg-secondary text-white;
+}
+.btn-secondary:hover {
+    @apply bg-cyan-700;
+}
