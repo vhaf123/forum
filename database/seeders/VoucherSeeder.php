@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Voucher;
-use App\Models\Code;
+
+use App\Imports\VoucherImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class VoucherSeeder extends Seeder
 {
@@ -15,12 +16,14 @@ class VoucherSeeder extends Seeder
      */
     public function run()
     {
-        $vouchers = Voucher::factory(100)->create();
+        Excel::import(new VoucherImport, 'GENERADOS_DD/FORUM_CUPON_20210108.csv', 'ftp');
+
+        /* $vouchers = Voucher::factory(100)->create();
 
         foreach ($vouchers as $voucher) {
             Code::factory(5)->create([
                 'voucher_id' => $voucher->id
             ]);
-        }
+        } */
     }
 }

@@ -9,7 +9,7 @@ class Voucher extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'created_at', 'updated_at'];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     //Relaciones
     public function getCheckAttribute(){

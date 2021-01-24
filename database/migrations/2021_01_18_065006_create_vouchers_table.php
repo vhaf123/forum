@@ -19,16 +19,21 @@ class CreateVouchersTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands');
 
+            $table->string('voucher_type');
+
             $table->dateTime('registration_date');
             $table->dateTime('expiration_date');
             
             $table->string('title');
 
             $table->text('description');
+            $table->text('description2');
+
+            $table->string('url')->nullable();
 
             $table->string('text_button');
 
-            $table->string('image');
+            $table->string('image')->nullable();
 
             $table->timestamps();
         });

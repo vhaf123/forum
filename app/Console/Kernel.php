@@ -5,6 +5,9 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\CustomerImport;
+
 class Kernel extends ConsoleKernel
 {
     /**
@@ -24,6 +27,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+
+        $schedule->call(function () {
+            /* Excel::import(new CustomerImport, 'GENERADOS_DD/FORUM_CLIENTES_20201217.csv', 'ftp'); */
+            \Log::info('probando las tareas programadas');
+        })->daily();
+
+
         // $schedule->command('inspire')->hourly();
     }
 

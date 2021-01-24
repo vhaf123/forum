@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('voucher');
         Storage::makeDirectory('voucher');
 
-        Customer::factory(100)->create();
-        // \App\Models\User::factory(10)->create();
+        $this->call(CustomerSeeder::class);
         Category::factory(4)->create();
-        Brand::factory(8)->create();
+        $this->call(BrandSeeder::class);
 
         $this->call(VoucherSeeder::class);
+        $this->call(CodeSeeder::class);
     }
 }
