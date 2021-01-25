@@ -14,8 +14,8 @@ class Customer extends Model
 
     //Relacion uno a muchos
 
-    public function exchangeds(){
-        return $this->hasMany(Exchanged::class);
+    public function codes(){
+        return $this->hasMany(Code::class);
     }
 
     //Relacion muchos a muchos

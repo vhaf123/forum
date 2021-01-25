@@ -25,4 +25,9 @@ class LoginController extends Controller
         return back()->with('info', 'RUT no registrado en la bbdd');
         
     }
+
+    public function logout(){
+        session()->forget('customer');
+        return redirect('/');
+    }
 }

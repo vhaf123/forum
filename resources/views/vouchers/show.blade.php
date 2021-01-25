@@ -37,12 +37,26 @@
                 @if ($voucher->url)
                     <a class="btn btn-secondary block" href="{{$voucher->url}}" target="_blank">{{$voucher->text_button}}</a>
                 @else
-                    <div class="btn btn-secondary">{{$voucher->text_button}}</div>
+                    <form action="{{route('vouchers.exchange', $voucher)}}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary w-full">{{$voucher->text_button}}</button>
+                    </form>
                 @endif
 
             </div>
         </div>
 
     </section>
+    
+
+    <x-slot name="js">
+        @if (session('info'))        
+            <script>
+                $(document).ready(function() {
+                    toastr.info("{{session('info')}}");
+                });
+            </script>
+        @endif
+    </x-slot>
 
 </x-app-layout>

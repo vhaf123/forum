@@ -9,5 +9,9 @@ class Code extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['value', 'voucher_id'];
+    protected $fillable = ['value', 'voucher_id', 'customer_id'];
+
+    public function customer(){
+        return $this->belongsTo(Customer::class);
+    }
 }

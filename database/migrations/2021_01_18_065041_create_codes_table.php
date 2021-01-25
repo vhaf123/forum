@@ -20,6 +20,9 @@ class CreateCodesTable extends Migration
             $table->unsignedBigInteger('voucher_id');
             $table->foreign('voucher_id')->references('id')->on('vouchers');
 
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->foreign('customer_id')->references('id')->on('customers');
+
             $table->timestamps();
         });
     }
