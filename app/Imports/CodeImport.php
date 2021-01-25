@@ -7,9 +7,10 @@ use App\Models\Code;
 use App\Models\Voucher;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
+use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class CodeImport implements ToModel, WithCustomCsvSettings, WithHeadingRow
+class CodeImport implements ToModel, WithCustomCsvSettings, WithUpserts, WithHeadingRow
 {
     /**
     * @param array $row
@@ -33,5 +34,10 @@ class CodeImport implements ToModel, WithCustomCsvSettings, WithHeadingRow
         return [
             'delimiter' => ";"
         ];
+    }
+
+    public function uniqueBy()
+    {
+        return 'value';
     }
 }

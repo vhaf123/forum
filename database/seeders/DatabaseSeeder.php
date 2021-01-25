@@ -23,8 +23,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomerSeeder::class);
         Category::factory(4)->create();
         $this->call(BrandSeeder::class);
-
         $this->call(VoucherSeeder::class);
         $this->call(CodeSeeder::class);
+
+        $this->call(LogoSeeder::class);
     }
 }
