@@ -1,23 +1,24 @@
 <div>
     <div class="bg-primary">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex">
-            <input wire:model="search" placeholder="¿Qué estás buscando?" autocomplete="off" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block flex-1 shadow-sm sm:text-sm border-gray-300 rounded-md px-3">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row">
+
+            <input wire:model="search" placeholder="¿Qué estás buscando?" autocomplete="off" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block flex-1 shadow-sm sm:text-sm border-gray-300 rounded-md px-3 py-1.5 md:py-0">
     
-            <select wire:model="brand_id" class="mx-2 mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <select wire:model="brand_id" class="md:mx-2 mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <option value="">Buscar por marca</option>
                 @foreach ($brands as $brand)
                     <option value="{{$brand->id}}">{{$brand->name}}</option>
                 @endforeach
             </select>
     
-            <select wire:model="category_id" class="mr-2 mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <select wire:model="category_id" class="md:mr-2 mt-1 block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <option value="">Buscar por categoría</option>
                 @foreach ($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
     
-            <button class="btn btn-secondary text-sm" wire:click="$set('favorites', true)">VER FAVORITOS</button>
+            <button class="btn btn-secondary text-sm py-2 mt-2 md:py-0 md:mt-0" wire:click="$set('favorites', true)">VER FAVORITOS</button>
         </div>
     </div>
 
@@ -28,7 +29,7 @@
 
         {{-- {{session('customer')->id}} --}}
 
-        <div class="grid grid-cols-3 gap-6 mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
             
             @forelse ($vouchers as $voucher)
                 <article class="rounded overflow-hidden shadow-lg flex flex-col bg-white relative">

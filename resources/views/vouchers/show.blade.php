@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-customer-layout>
 
     <section class="bg-primary relative">
         
@@ -61,4 +61,4 @@
         @endif
     </x-slot>
 
-</x-app-layout>
+</x-customer-layout>

@@ -17,7 +17,7 @@ class SessionValid
     public function handle(Request $request, Closure $next)
     {
         if(!session('customer')){
-            return redirect('/login');
+            return redirect()->route('login.session');
         }
 
         return $next($request);

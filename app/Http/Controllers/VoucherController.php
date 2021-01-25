@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Voucher;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CodeExchanged;
+use Illuminate\Support\Carbon;
+use App\Models\VoucherTrack;
 
 class VoucherController extends Controller
 {
@@ -14,6 +16,14 @@ class VoucherController extends Controller
         /* return $voucher->contador; */
 
         /* return $voucher->codes()->where('customer_id', null)->count(); */
+
+        VoucherTrack::create([
+            'id_cliente'    => session('customer')->id_cliente,
+            'rut'           =>  session('customer')->rut,
+            'accion'        => 'OPEN',
+            'modulo'        => 'BENEFICIOS',
+            'fecha_track'   => Carbon::now()->format('d-m-Y')
+        ]);
 
         return view('vouchers.show', compact('voucher'));
     }
@@ -25,6 +35,15 @@ class VoucherController extends Controller
             if(!$code->customer_id){
                 $code->update([
                     'customer_id' => session('customer')->id
+                ]);
+
+                VoucherTrack::create([
+                    'id_cliente'    => session('customer')->id_cliente,
+                    'rut'           =>  session('customer')->rut,
+                    'accion'        => 'OPEN',
+                    'modulo'        => 'CUPON',
+                    'observacion'   => 'CANJE DE CUPON',
+                    'fecha_track'   => Carbon::now()->format('d-m-Y')
                 ]);
 
                 $mail = new CodeExchanged($code);

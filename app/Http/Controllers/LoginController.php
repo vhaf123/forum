@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\VoucherTrack;
+use Illuminate\Support\Carbon;
 
 class LoginController extends Controller
 {
@@ -18,6 +20,14 @@ class LoginController extends Controller
             /* return $customer; */
 
             session(['customer' => $customer]);
+
+            VoucherTrack::create([
+                'id_cliente'    => $customer->id_cliente,
+                'rut'           =>  $customer->rut,
+                'accion'        => 'OPEN',
+                'modulo'        => 'INICIO_SESION',
+                'fecha_track'   => Carbon::now()->format('d-m-Y')
+            ]);
 
             return redirect('/');
         }

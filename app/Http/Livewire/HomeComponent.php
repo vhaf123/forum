@@ -53,7 +53,7 @@ class HomeComponent extends Component
 
         }
 
-        return view('livewire.home-component', compact('vouchers'));
+        return view('livewire.home-component', compact('vouchers'))->layout('layouts.customer');
     }
 
     public function favorites(Voucher $voucher){

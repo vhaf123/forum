@@ -29,8 +29,8 @@ class Kernel extends ConsoleKernel
     {
 
         $schedule->call(function () {
-            /* Excel::import(new CustomerImport, 'GENERADOS_DD/FORUM_CLIENTES_20201217.csv', 'ftp'); */
-            \Log::info('probando las tareas');
+            Excel::import(new CustomerImport, 'GENERADOS_DD/FORUM_CLIENTES_20201217.csv', 'ftp');
+  /*           \Log::info('probando las tareas'); */
         })->everyMinute();
 
 

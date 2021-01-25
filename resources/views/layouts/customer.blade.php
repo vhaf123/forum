@@ -48,11 +48,17 @@
                         <h1 class="text-primary text-xl uppercase">Programa de beneficios</h1>
 
 
-                        <form action="{{route('logout')}}" method="POST">
+                        <form action="{{route('logout.session')}}" method="POST">
 
                             @csrf
 
-                            <button type="submit" class="text-sm text-gray-500 hover:text-gray-700 focus:outline-none">
+                            <button type="submit" class="ml-4 text-sm text-gray-500 hover:text-gray-700 focus:outline-none md:hidden">
+                                <i class="fas fa-sign-out-alt text-lg mr-1"></i>
+                                Logout
+                            </button>
+
+
+                            <button type="submit" class="text-sm text-gray-500 hover:text-gray-700 focus:outline-none hidden md:block">
                                 <i class="fas fa-sign-out-alt text-lg mr-1"></i>
                                 {{ session('customer')->name }}
                             </button>
