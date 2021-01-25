@@ -3,7 +3,8 @@
     <section class="bg-primary relative">
         
         <div class="absolute w-1/2 h-64">
-            <img class="w-full h-full object-cover object-center" src="{{Storage::url($voucher->image)}}" alt="">
+            {{-- <img class="w-full h-full object-cover object-center" src="{{Storage::url($voucher->image)}}" alt=""> --}}
+            <img class="w-full h-full object-cover object-center" src="https://cdn.pixabay.com/photo/2020/12/10/20/40/color-5821297_960_720.jpg" alt="">
         </div>
 
         {{-- grid --}}
@@ -32,7 +33,8 @@
 
         <div class="rounded overflow-hidden shadow-lg flex flex-col bg-white">
             <div class="px-6 py-4">
-                <img src="{{$voucher->brand->url_logo}}" alt="">
+                {{-- <img src="{{$voucher->brand->url_logo}}" alt=""> --}}
+                <img src="{{asset('img/logo/logo_Trasnvip.png')}}" alt="">
 
                 @if ($voucher->url)
                     <a class="btn btn-secondary block" href="{{$voucher->url}}" target="_blank">{{$voucher->text_button}}</a>

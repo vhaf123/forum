@@ -11,9 +11,26 @@ class Voucher extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    //Relaciones
+    //Atributos
     public function getCheckAttribute(){
         return $this->customers->contains(session('customer')->id);
+    }
+
+    public function getContadorAttribute(){
+        
+        if($this->codes()->where('customer_id', session('customer')->id)->count()){
+            return true;
+        }else{
+
+            if(!$this->url && $this->codes()->where('customer_id', null)->count()){
+                return true;
+            }elseif ($this->url) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
     }
 
     //Query Scopes

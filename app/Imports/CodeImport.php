@@ -23,6 +23,10 @@ class CodeImport implements ToModel, WithCustomCsvSettings, WithUpserts, WithHea
         $brand = Brand::where('name', $row['marca_beneficio'])->first();
         $voucher = Voucher::where('brand_id', $brand->id)->where('voucher_type', $row['tipo_cupon'])->first();
 
+        if($row['codigo_cupon'] == 'SIN_CUPON'){
+            return null;
+        }
+
         return new Code([
             'value' => $row['codigo_cupon'],
             'voucher_id' => $voucher->id

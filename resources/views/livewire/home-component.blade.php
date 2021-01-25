@@ -31,8 +31,14 @@
         <div class="grid grid-cols-3 gap-6 mb-4">
             
             @forelse ($vouchers as $voucher)
-                <article class="rounded overflow-hidden shadow-lg flex flex-col bg-white">
+                <article class="rounded overflow-hidden shadow-lg flex flex-col bg-white relative">
                     
+                    @if (!$voucher->contador)
+                        <div class="absolute w-full h-full bg-gray-400">
+
+                        </div>
+                    @endif
+
                     <div class="bg-primary px-6 py-2 flex justify-between items-center">
                         <h2 class="text-white uppercase font-bold">{{$voucher->brand->name}}</h2>
 
@@ -43,7 +49,7 @@
                         @endif
                     </div>
 
-                    <img class="w-full h-56 object-cover object-center" src="{{Storage::url($voucher->image)}}" alt="Sunset in the mountains">
+                    <img class="w-full h-56 object-cover object-center" src="https://cdn.pixabay.com/photo/2020/12/10/20/40/color-5821297_960_720.jpg" alt="Sunset in the mountains">
     
                     <div class="px-6 pt-2 pb-4 flex-1 flex flex-col">
                         <a class="text-sm text-secondary" href="">{{$voucher->brand->category->name}}</a>
@@ -64,7 +70,7 @@
     
         </div>
 
-        {{$vouchers}}
+        {{$vouchers->links()}}
     
     </section>
     

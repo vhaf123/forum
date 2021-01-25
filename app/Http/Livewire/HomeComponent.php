@@ -48,7 +48,8 @@ class HomeComponent extends Component
 
         }else{
 
-            $vouchers = Voucher::where('title', 'LIKE', '%' . $this->search . '%')->paginate(6);
+            $vouchers = Voucher::where('title', 'LIKE', '%' . $this->search . '%')
+                        ->paginate(6);
 
         }
 

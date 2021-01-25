@@ -10,6 +10,11 @@ use App\Mail\CodeExchanged;
 class VoucherController extends Controller
 {
     public function show(Voucher $voucher){
+
+        /* return $voucher->contador; */
+
+        /* return $voucher->codes()->where('customer_id', null)->count(); */
+
         return view('vouchers.show', compact('voucher'));
     }
 
